@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerControll : MonoBehaviour
 {
@@ -31,5 +32,12 @@ public class PlayerControll : MonoBehaviour
         Vector3 movement = transform.forward * moveInput *moveSpeed;
         rb.linearVelocity = new Vector3(movement.x, rb.linearVelocity.y, movement.z);
         //y�͏d�͂Ȃǂ��ێ����邽�߂�rb.velocity�ŕێ�
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            SceneManager.LoadScene("BadEndScene");
+        }
     }
 }
