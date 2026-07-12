@@ -13,7 +13,7 @@ public class Timer : MonoBehaviour
     {
         countdown -= Time.deltaTime;
 
-        timeText.text = countdown.ToString();
+        timeText.text = countdown.ToString("F0");
 
         if (countdown <= 0)
         {
