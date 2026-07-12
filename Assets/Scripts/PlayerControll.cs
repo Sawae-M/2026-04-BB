@@ -40,4 +40,11 @@ public class PlayerControll : MonoBehaviour
             SceneManager.LoadScene("BadEndScene");
         }
     }
+    private void OnTrrigerEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            SceneManager.LoadScene("BadEndScene");
+        }
+    }
 }

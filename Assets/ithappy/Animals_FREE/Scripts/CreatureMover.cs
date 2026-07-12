@@ -46,6 +46,9 @@ namespace ithappy.Animals_FREE
         public Vector3 Target => m_Target;
         public bool IsRun => m_IsRun;
 
+        private Transform m_PlayerTarget;
+        public float moveSpeed = 5f;
+
         private void OnValidate()
         {
             m_WalkSpeed = Mathf.Max(m_WalkSpeed, 0f);
@@ -62,10 +65,13 @@ namespace ithappy.Animals_FREE
 
             m_Movement = new MovementHandler(m_Controller, m_Transform, m_WalkSpeed, m_RunSpeed, m_RotateSpeed, m_JumpHeight, m_Space);
             m_Animation = new AnimationHandler(m_Animator, m_VerticalID, m_StateID);
+            m_PlayerTarget = GameObject.FindGameObjectWithTag("Player").transform;
         }
 
         private void Update()
         {
+            Vector3 dir = (m_PlayerTarget.position - m_Transform.position).normalized;
+            SetInput(new Vector2(0f, 1f), m_PlayerTarget.position, true, false);
             m_Movement.Move(Time.deltaTime, in m_Axis, in m_Target, m_IsRun, m_IsMoving, out var animAxis, out var isAir);
             m_Animation.Animate(in animAxis, m_IsRun ? 1f : 0f, Time.deltaTime);
         }
