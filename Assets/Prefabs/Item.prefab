@@ -124,6 +124,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggeringTag: Player
   pickupDestroysItem: 1
+  pickupSound: {fileID: 8300000, guid: bc208f4751267fb4ebc6b87d557631f7, type: 3}
+  pickupVolume: 1
 --- !u!54 &5928245160995944223
 Rigidbody:
   m_ObjectHideFlags: 0
