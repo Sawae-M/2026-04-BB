@@ -1,11 +1,15 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerControll : MonoBehaviour
 {
     [Header("�ړ��ݒ�")]
     public float moveSpeed = 5f;
     public float turnSpeed = 10f;
+
+    public GameObject uiImage;
+    [SerializeField] private float waitTime = 2.0f;
 
     private Rigidbody rb;
     private float moveInput;
@@ -37,6 +41,7 @@ public class PlayerControll : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            uiImage.SetActive(true);
             SceneManager.LoadScene("BadEndScene");
         }
     }
